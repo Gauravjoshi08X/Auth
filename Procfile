@@ -1,1 +1,1 @@
-web: python API/oauthConnection.py
+web: python -m API.oauthConnection
