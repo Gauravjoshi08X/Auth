@@ -10,7 +10,6 @@ class OauthConnection:
 
         os.environ["OAUTHLIB_INSECURE_TRANSPORT"] = "1"
 
-        self.BASE_DIR = os.path.dirname(os.path.abspath(__file__))
         self.tunnel_url: str = os.getenv("AUTH_TUNNEL")
         self.SCOPES = [
             "openid",
@@ -18,7 +17,7 @@ class OauthConnection:
             "https://www.googleapis.com/auth/userinfo.profile",
             "https://www.googleapis.com/auth/gmail.send"
         ]
-        self.CLIENT_SECRETS = r"src/certs/g_cred.json"
+        self.CLIENT_SECRETS = os.getenv("g_cred")
         self.REDIRECT_URI = f"{self.tunnel_url}/oauth/callback"
 
         self.app.add_url_rule('/auth/google', view_func=self.auth_google)
