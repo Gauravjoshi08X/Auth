@@ -7,7 +7,6 @@ from ..utils.databaseConnect import DatabaseInsert
 class OauthConnection:
     def __init__(self):
         self.app = Flask(__name__)
-        self.app.secret_key = "your_secret_key"
 
         os.environ["OAUTHLIB_INSECURE_TRANSPORT"] = "1"
 
@@ -64,6 +63,3 @@ class OauthConnection:
             return f"OAuth failed: {e}", 500
 
 app=OauthConnection().app
-if __name__ == "__main__":
-    oauth_conn = OauthConnection()
-    oauth_conn.app.run(port=5000)

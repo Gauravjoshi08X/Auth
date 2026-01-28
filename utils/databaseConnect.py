@@ -190,9 +190,3 @@ class Calculate():
 		if opened[0]==0:
 			return 0.0
 		return f"{(clicked[0]/opened[0])*100:.2f}"
-
-if __name__=="__main__":
-	print(DatabaseFetch().sendStat("Gaurav Joshi"))
-	print(DatabaseFetch().getEmails("Gaurav Joshi"))
-	opened, clicked=DatabaseFetch().fetchStat("Gaurav Joshi")
-	print(opened[0])
