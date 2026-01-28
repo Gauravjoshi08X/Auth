@@ -5,10 +5,11 @@ dotenv.load_dotenv("src/certs/credential.env")
 
 class DatabaseInsert():
 	def __init__(self):
-		self.name=os.getenv("PGHOST")
-		self.name=os.getenv("PGDATABASE")
-		self.port=os.getenv("PGPORT")
-		self.password=os.getenv("PGPASSWORD")
+		self.name = os.getenv('PGDATABASE')
+		self.user = os.getenv('PGUSER')
+		self.password = os.getenv('PGPASSWORD')
+		self.host = os.getenv('PGHOST')
+		self.port = os.getenv('PGPORT')
 
 	def insertUserData(self, email: str, uname: str, refresh_token: str) -> None:
 		with psycopg2.connect(f"postgresql://{self.user}:{self.password}@{self.host}:{self.port}/{self.name}") as conn:
@@ -62,10 +63,11 @@ class DatabaseInsert():
 
 class DatabaseFKFetch():
 	def __init__(self):
-		self.name=os.getenv("PGHOST")
-		self.name=os.getenv("PGDATABASE")
-		self.port=os.getenv("PGPORT")
-		self.password=os.getenv("PGPASSWORD")
+		self.name = os.getenv('PGDATABASE')
+		self.user = os.getenv('PGUSER')
+		self.password = os.getenv('PGPASSWORD')
+		self.host = os.getenv('PGHOST')
+		self.port = os.getenv('PGPORT')
 
 	def fetchFKData(self,id: str, table: str) -> int:
 		with psycopg2.connect(f"dbname={self.name} user={self.user} password={self.password}") as conn:
@@ -93,10 +95,11 @@ class DatabaseFKFetch():
 
 class DatabaseFetch():
 	def __init__(self):
-		self.name=os.getenv("PGHOST")
-		self.name=os.getenv("PGDATABASE")
-		self.port=os.getenv("PGPORT")
-		self.password=os.getenv("PGPASSWORD")
+		self.name = os.getenv('PGDATABASE')
+		self.user = os.getenv('PGUSER')
+		self.password = os.getenv('PGPASSWORD')
+		self.host = os.getenv('PGHOST')
+		self.port = os.getenv('PGPORT')
 
 	def isUser(self, user: str)-> bool:
 		with psycopg2.connect(f"dbname={self.name} user={self.user} password={self.password}") as conn:
