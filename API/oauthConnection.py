@@ -1,6 +1,6 @@
 from flask import Flask, redirect, request
 from google_auth_oauthlib.flow import Flow
-import requests
+import requests, json
 import os
 from utils.databaseConnect import DatabaseInsert
 
@@ -17,7 +17,7 @@ class OauthConnection:
             "https://www.googleapis.com/auth/userinfo.profile",
             "https://www.googleapis.com/auth/gmail.send"
         ]
-        self.CLIENT_SECRETS = os.getenv("g_cred")
+        self.CLIENT_SECRETS = json.loads(os.getenv("g_cred"))
         self.REDIRECT_URI = f"{self.tunnel_url}/oauth/callback"
 
         self.app.add_url_rule('/auth/google', view_func=self.auth_google)
