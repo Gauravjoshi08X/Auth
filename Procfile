@@ -1,1 +1,1 @@
-web: python -m API.oauthConnection
+web: gunicorn -w 4 -b 0.0.0.0:$PORT API.oauthConnection:app
