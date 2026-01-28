@@ -7,7 +7,7 @@ class DatabaseInsert():
 	def __init__(self):
 		self.name=os.getenv("DBNAME")
 		self.user=os.getenv("DBUSER")
-		self.password=os.getenv("DBPASSWORD")
+		self.password=os.getenv("DBPASS")
 
 	def insertUserData(self, email: str, uname: str, refresh_token: str) -> None:
 		with psycopg2.connect(f"dbname={self.name} user={self.user} password={self.password}") as conn:
@@ -63,7 +63,7 @@ class DatabaseFKFetch():
 	def __init__(self):
 		self.name=os.getenv("DBNAME")
 		self.user=os.getenv("DBUSER")
-		self.password=os.getenv("DBPASSWORD")
+		self.password=os.getenv("DBPASS")
 
 	def fetchFKData(self,id: str, table: str) -> int:
 		with psycopg2.connect(f"dbname={self.name} user={self.user} password={self.password}") as conn:
@@ -93,7 +93,7 @@ class DatabaseFetch():
 	def __init__(self):
 		self.name=os.getenv("DBNAME")
 		self.user=os.getenv("DBUSER")
-		self.password=os.getenv("DBPASSWORD")
+		self.password=os.getenv("DBPASS")
 
 	def isUser(self, user: str)-> bool:
 		with psycopg2.connect(f"dbname={self.name} user={self.user} password={self.password}") as conn:
@@ -190,3 +190,9 @@ class Calculate():
 		if opened[0]==0:
 			return 0.0
 		return f"{(clicked[0]/opened[0])*100:.2f}"
+
+if __name__=="__main__":
+	print(DatabaseFetch().sendStat("Gaurav Joshi"))
+	print(DatabaseFetch().getEmails("Gaurav Joshi"))
+	opened, clicked=DatabaseFetch().fetchStat("Gaurav Joshi")
+	print(opened[0])
