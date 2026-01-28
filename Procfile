@@ -1,1 +1,1 @@
-web: cd API && python oauthConnection.py
+web: python API/oauthConnection.py
