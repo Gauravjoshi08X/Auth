@@ -2,7 +2,7 @@ from flask import Flask, redirect, request
 from google_auth_oauthlib.flow import Flow
 import requests
 import os
-from .utils.databaseConnect import DatabaseInsert
+from ..utils.databaseConnect import DatabaseInsert
 
 class OauthConnection:
     def __init__(self):
