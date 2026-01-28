@@ -1,7 +1,5 @@
 import psycopg2
-import dotenv, os
-
-dotenv.load_dotenv("src/certs/credential.env")
+import os
 
 class DatabaseInsert():
 	def __init__(self):
