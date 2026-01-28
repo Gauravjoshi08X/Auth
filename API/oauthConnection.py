@@ -24,7 +24,7 @@ class OauthConnection:
         self.app.add_url_rule('/oauth/callback', view_func=self.oauth_callback)
 
     def auth_google(self):
-        self.flow = Flow.from_client_secrets_file(
+        self.flow = Flow.from_client_config(
             self.CLIENT_SECRETS,
             scopes=self.SCOPES,
             redirect_uri=self.REDIRECT_URI
