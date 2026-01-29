@@ -39,7 +39,7 @@ class OauthConnection:
 
     def oauth_callback(self):
         try:
-            flow = Flow.from_client_secrets_file(
+            flow = Flow.from_client_config(
                 self.CLIENT_SECRETS,
                 scopes=self.SCOPES,
                 redirect_uri=self.REDIRECT_URI
